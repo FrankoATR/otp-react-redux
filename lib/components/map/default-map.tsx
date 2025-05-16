@@ -41,6 +41,8 @@ import TransitVehicleOverlay from './connected-transit-vehicle-overlay'
 import TripViewerOverlay from './connected-trip-viewer-overlay'
 import VehicleRentalOverlay from './connected-vehicle-rental-overlay'
 import withMap from './with-map'
+import WeatherOverlay from './weather-overlay'
+import useWeatherRequests from './use-weather-requests'
 
 const MapContainer = styled.div`
   height: 100%;
@@ -139,7 +141,7 @@ function getLayerName(overlay, config, intl) {
   }
 }
 
-class DefaultMap extends Component {
+class DefaultMapInner extends Component {
   static contextType = ComponentContext
 
   constructor(props) {
@@ -448,6 +450,7 @@ class DefaultMap extends Component {
           {/* If set, custom overlays are shown if no active itinerary is shown or pending. */}
           {typeof getCustomMapOverlays === 'function' &&
             getCustomMapOverlays(!itinerary && !pending)}
+          <WeatherOverlay />
           <NavigationControl
             position={navigationControlPosition || 'bottom-right'}
           />
@@ -512,4 +515,11 @@ const mapDispatchToProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(injectIntl(withMap(DefaultMap)))
+)(injectIntl(withMap(DefaultMapWrapper)))
+
+
+
+function DefaultMapWrapper (props) {
+  useWeatherRequests()
+  return <DefaultMapInner {...props} />
+}
