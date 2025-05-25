@@ -118,8 +118,8 @@ dateTime:
   dateFormat: MM/dd/yyyy
 
 map:
-  initLat: 45.52
-  initLon: -122.682
+  initLat: 43.59712
+  initLon: -84.76763
   # autoFlyOnTripFormUpdate: false
   # navigationControlPosition: "bottom-right"
 
