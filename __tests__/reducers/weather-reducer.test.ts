@@ -1,75 +1,44 @@
-// Tipos para los datos del clima
-interface WeatherData {
-  temperature: number
-  weathercode: number
-  windspeed: number
-  winddirection: number
-  [key: string]: any
-}
+import weatherReducer from '../../lib/reducers/weather'
 
-// Cada entrada del clima en el store
-interface WeatherEntry {
-  lat: number
-  lon: number
-  data: WeatherData
-}
-
-// Estado completo del reducer
-interface WeatherState {
-  byId: Record<string, WeatherEntry>
-  loading: boolean
-  error: string | null
-}
-
-// Estado inicial tipado
-const initialState: WeatherState = {
+const initialState = {
   byId: {},
   loading: false,
   error: null
 }
 
-// Reducer
-export default function weatherReducer(
-  state: WeatherState = initialState,
-  action: any
-): WeatherState {
-  switch (action.type) {
-    case 'REQUEST_WEATHER':
-      return {
-        ...state,
-        loading: true
-      }
+describe('weatherReducer', () => {
+  it('devuelve el estado inicial por defecto', () => {
+    const newState = weatherReducer(undefined, { type: '@@INIT' })
+    expect(newState).toEqual(initialState)
+  })
 
-    case 'RECEIVE_WEATHER':
-      return {
-        ...state,
-        loading: false,
-        byId: {
-          ...state.byId,
-          [action.id]: {
-            lat: action.lat,
-            lon: action.lon,
-            data: action.payload
-          }
-        }
-      }
+  it('maneja REQUEST_WEATHER', () => {
+    const action = { type: 'REQUEST_WEATHER' }
+    const newState = weatherReducer(initialState, action)
+    expect(newState.loading).toBe(true)
+  })
 
-    case 'WEATHER_ERROR':
-      return {
-        ...state,
-        loading: false,
-        error: action.error
-      }
+  it('maneja RECEIVE_WEATHER', () => {
+    const action = {
+      type: 'RECEIVE_WEATHER',
+      id: 'test',
+      lat: 1,
+      lon: 2,
+      payload: { temperature: 20, weathercode: 0, windspeed: 5, winddirection: 90 }
+    }
+    const newState = weatherReducer(initialState, action)
+    expect(newState.loading).toBe(false)
+    expect(newState.byId.test).toEqual({
+      lat: 1,
+      lon: 2,
+      data: action.payload
+    })
+  })
 
-    case 'CLEAR_WEATHER':
-      return {
-        ...state,
-        byId: {},
-        loading: false,
-        error: null
-      }
-
-    default:
-      return state
-  }
-}
+  it('maneja WEATHER_ERROR', () => {
+    const action = { type: 'WEATHER_ERROR', error: 'fail' }
+    const newState = weatherReducer({ ...initialState, loading: true }, action)
+    expect(newState.loading).toBe(false)
+    expect(newState.error).toBe('fail')
+  })
+})

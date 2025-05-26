@@ -7,7 +7,7 @@ import polyline from '@mapbox/polyline'
 
 /* ───── CONFIG ───────────────────────────── */
 const MODES_WITH_WEATHER = ['WALK', 'BICYCLE', 'CAR']
-const STEP_KM = 6
+const STEP_KM = 4
 /* ─────────────────────────────────────────── */
 
 // tipos locales
