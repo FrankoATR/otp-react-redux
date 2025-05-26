@@ -2,6 +2,19 @@
 module.exports = {
   // 👉 entorno con DOM para pruebas de componentes React
   testEnvironment: 'jsdom',
+  
+  collectCoverage: true,
+  collectCoverageFrom: ['lib/**/*.{ts,tsx}'],
+  coverageDirectory: 'coverage',
+  // 60 % global como exige la rúbrica
+  coverageThreshold: {
+    global: {
+      branches: 60,
+      functions: 60,
+      lines: 60,
+      statements: 60
+    }
+  },
 
   // transforma JS/TS/TSX con babel-jest
   transform: {
