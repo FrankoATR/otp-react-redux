@@ -1,3 +1,4 @@
+// lib/components/map/use-weather-requests.tsx
 import { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearWeather, fetchWeather } from '../../actions/weather'
@@ -6,8 +7,31 @@ import polyline from '@mapbox/polyline'
 
 /* ───── CONFIG ───────────────────────────── */
 const MODES_WITH_WEATHER = ['WALK', 'BICYCLE', 'CAR']
-const STEP_KM = 6                              // cada 6 km
+const STEP_KM = 6
 /* ─────────────────────────────────────────── */
+
+// tipos locales
+interface Leg {
+  mode: string
+  legGeometry?: { points: string }
+  geometry?: { coordinates: [number, number][] }
+}
+
+interface Itinerary {
+  id: string
+  legs?: Leg[]
+}
+
+interface RootState {
+  otp: {
+    activeSearchId: string
+    currentQuery: {
+      from: { lat: number; lon: number } | null
+      to: { lat: number; lon: number } | null
+    }
+  }
+  weather: any
+}
 
 /* distancia Haversine (km) */
 const haversine = ([lat1, lon1]: number[], [lat2, lon2]: number[]) => {
@@ -22,20 +46,14 @@ const haversine = ([lat1, lon1]: number[], [lat2, lon2]: number[]) => {
 }
 
 export default function useWeatherRequests () {
-  const dispatch  = useDispatch()
+  const dispatch = useDispatch()
+  const searchId = useSelector((s: RootState) => s.otp.activeSearchId)
+  const from     = useSelector((s: RootState) => s.otp.currentQuery.from)
+  const to       = useSelector((s: RootState) => s.otp.currentQuery.to)
+  const itinerary = useSelector(getActiveItinerary) as Itinerary | null
 
-  /* datos del estado OTP ------------------------------------ */
-  const searchId  = useSelector(s => s.otp.activeSearchId)
-  const from      = useSelector(s => s.otp.currentQuery.from)
-  const to        = useSelector(s => s.otp.currentQuery.to)
-  const itinerary = useSelector(getActiveItinerary)
-
-  /* recordamos el último itinerary.id que pintamos ---------- */
   const prevItinId = useRef<string | null>(null)
 
-  /* =========================================================
-   * 1. Origen y destino (¡siempre presentes!)
-   * ========================================================= */
   const fetchFromTo = () => {
     if (from?.lat && from?.lon)
       dispatch(fetchWeather({ lat: from.lat, lon: from.lon, id: 'from' }))
@@ -43,59 +61,42 @@ export default function useWeatherRequests () {
       dispatch(fetchWeather({ lat: to.lat, lon: to.lon, id: 'to' }))
   }
 
-  /* cada vez que cambien coords de from/to … */
   useEffect(fetchFromTo, [from?.lat, from?.lon, to?.lat, to?.lon])
 
-  /* =========================================================
-   * 2. Detectar NUEVA ruta
-   *    (cambia searchId o itinerary.id)
-   * ========================================================= */
   useEffect(() => {
-    const routeChanged =
-      itinerary && prevItinId.current !== itinerary.id
+    const routeChanged = itinerary && prevItinId.current !== itinerary.id
 
     if (routeChanged || !prevItinId.current) {
-      /* 2-A  limpiamos todo lo anterior ------- */
       dispatch(clearWeather())
-
-      /* 2-B  volvemos a pintar origen/destino -- */
       fetchFromTo()
-
-      /* 2-C  guardamos este itinerary.id ------- */
       prevItinId.current = itinerary?.id ?? null
     }
 
-    /* si aún no hay itinerario, salimos */
-    if (!itinerary) return
+    if (!itinerary?.legs?.length) return
 
-    /* =======================================================
-     * 3. Globos intermedios cada 1 km en los legs elegidos
-     * ======================================================= */
-    itinerary.legs?.forEach((leg, legIdx) => {
+    itinerary.legs.forEach((leg: Leg, legIdx: number) => {
       if (!MODES_WITH_WEATHER.includes(leg.mode)) return
 
-      /* decodifica polilínea */
-      const raw = leg.legGeometry?.points
-        ? polyline.decode(leg.legGeometry.points)                 // OTP1
-        : leg.geometry?.coordinates?.map(([lon, lat]) => [lat, lon]) // OTP2
+      const raw: number[][] | undefined =
+        leg.legGeometry?.points
+          ? polyline.decode(leg.legGeometry.points)
+          : leg.geometry?.coordinates?.map(([lon, lat]) => [lat, lon])
 
       if (!raw?.length) return
 
-      /* recorre la línea acumulando distancia */
       let acc = 0
       let last = raw[0]
 
-      raw.forEach((cur, ptIdx) => {
-        acc += haversine(last, cur)
+      raw.forEach(([lat, lon]: number[], ptIdx: number) => {
+        acc += haversine(last, [lat, lon])
         const isLast = ptIdx === raw.length - 1
 
         if (acc >= STEP_KM || isLast) {
-          const [lat, lon] = cur
           const id = `leg-${legIdx}-pt-${ptIdx}`
           dispatch(fetchWeather({ lat, lon, id }))
-          acc = 0              // reinicia cada km
+          acc = 0
         }
-        last = cur
+        last = [lat, lon]
       })
     })
   }, [searchId, itinerary])
