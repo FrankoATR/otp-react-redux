@@ -14,7 +14,7 @@ export default function WeatherMarker({
 }) {
   if (!weather?.data) return null
 
-  const { temperature, weathercode } = weather.data
+  const { temperature, weathercode, windspeed, winddirection } = weather.data
   const raining = weathercode >= 60
   const Card = styled.div`
     background: #fff;
@@ -33,9 +33,9 @@ export default function WeatherMarker({
       <Card>
         {raining ? '☔ Lluvia' : '🌤'} {temperature} °C
         <br />
-        💨 {weather.data.windspeed} km/h
+        💨 {windspeed} km/h
         <br />
-        🧭 Dirección del viento: {weather.data.winddirection}°<br />
+        🧭 Dirección del viento: {winddirection}°<br />
       </Card>
     </Marker>
   )

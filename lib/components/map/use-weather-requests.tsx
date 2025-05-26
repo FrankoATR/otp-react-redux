@@ -6,7 +6,7 @@ import polyline from '@mapbox/polyline'
 
 /* ───── CONFIG ───────────────────────────── */
 const MODES_WITH_WEATHER = ['WALK', 'BICYCLE', 'CAR']
-const STEP_KM = 1.0                              // cada 1 km
+const STEP_KM = 6                              // cada 6 km
 /* ─────────────────────────────────────────── */
 
 /* distancia Haversine (km) */
