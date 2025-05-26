@@ -1,19 +1,9 @@
 // lib/components/map/weather-marker.tsx
-import React from 'react'
 import { Marker } from 'react-map-gl'
+import React from 'react'
 import styled from 'styled-components'
 
-const Card = styled.div`
-  background: #fff;
-  padding: 4px 6px;
-  border-radius: 4px;
-  font-size: 12px;
-  box-shadow: 0 0 4px rgba(0,0,0,.2);
-  pointer-events: none;
-  white-space: nowrap;
-`
-
-export default function WeatherMarker ({
+export default function WeatherMarker({
   lat,
   lon,
   weather // <- objeto completo guardado en el store
@@ -26,11 +16,26 @@ export default function WeatherMarker ({
 
   const { temperature, weathercode } = weather.data
   const raining = weathercode >= 60
-
+  const Card = styled.div`
+    background: #fff;
+    padding: 8px 10px;
+    border-radius: 16px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    white-space: nowrap;
+    border: 1px solid ${raining ? '#3498db' : '#f39c12'};
+  `
   return (
-    <Marker longitude={lon} latitude={lat} anchor="bottom">
+    <Marker anchor="bottom" latitude={lat} longitude={lon}>
       <Card>
-        {raining ? '☔ Lluvia' : '🌤️'} {temperature} °C
+        {raining ? '☔ Lluvia' : '🌤'} {temperature} °C
+        <br />
+        💨 {weather.data.windspeed} km/h
+        <br />
+        🧭 Dirección del viento: {weather.data.winddirection}°<br />
       </Card>
     </Marker>
   )
