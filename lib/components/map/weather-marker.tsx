@@ -4,14 +4,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 interface WeatherData {
-  lat: number
-  lon: number
   data: {
     temperature: number
     weathercode: number
-    windspeed: number
     winddirection: number
+    windspeed: number
   }
+  lat: number
+  lon: number
 }
 
 interface Props {
@@ -31,23 +31,23 @@ const Card = styled.div<{ raining: boolean }>`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   white-space: nowrap;
-  border: 1px solid ${props => (props.raining ? '#3498db' : '#f39c12')};
+  border: 1px solid ${(props) => (props.raining ? '#3498db' : '#f39c12')};
 `
 
 export default function WeatherMarker({ lat, lon, weather }: Props) {
   if (!weather?.data) return null
 
-  const { temperature, weathercode, windspeed, winddirection } = weather.data
+  const { temperature, weathercode, winddirection, windspeed } = weather.data
   const raining = weathercode >= 60
 
   return (
     <Marker anchor="bottom" latitude={lat} longitude={lon}>
       <Card raining={raining}>
-        {raining ? '☔ Lluvia' : '🌤'} {temperature} °C
+        {raining ? '☔ Raining' : '🌤'} {temperature} °C
         <br />
         💨 {windspeed} km/h
         <br />
-        🧭 Dirección del viento: {winddirection}°
+        🧭 Wind direction: {winddirection}°
       </Card>
     </Marker>
   )
