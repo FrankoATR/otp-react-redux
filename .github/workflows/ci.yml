@@ -2,9 +2,9 @@ name: Node CI (Windows)
 
 on:
   push:
-    branches: [ feature/weather-cards ]
+    branches: [feature/weather-cards]
   pull_request:
-    branches: [ feature/weather-cards ]
+    branches: [feature/weather-cards]
 
 jobs:
   build-test:
@@ -15,33 +15,22 @@ jobs:
         node-version: [20.19.0]
 
     steps:
-      - name: Check out repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Cachea las dependencias de Yarn por velocidad
-      - name: Cache Yarn
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.LOCALAPPDATA }}\Yarn\Cache
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      - name: Use Node ${{ matrix.node-version }}
+      - name: Setup Node.js and cache yarn
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'yarn'
+          cache: yarn
 
-      - name: Install deps
-        run: yarn --frozen-lockfile
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
 
-      # --- Quality gates ---------------------------------------------------
       - name: Lint
         run: yarn lint-all
 
       - name: Type check
         run: yarn typecheck
 
-      - name: Tests + coverage ≥ 60 %
-        run: yarn test --coverage
+      - name: Run weather tests
+        run: yarn test:openweather

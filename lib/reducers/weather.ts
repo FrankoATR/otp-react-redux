@@ -1,6 +1,5 @@
-// lib/reducers/weather.ts
 import { AnyAction } from 'redux'
-import { WeatherPayload } from '../actions/weather' // desde el archivo que ya corregimos
+import { WeatherPayload } from '../actions/weather'
 
 interface WeatherData {
   lat: number

@@ -1,4 +1,3 @@
-// lib/components/map/weather-overlay.tsx
 import React from 'react'
 import { useSelector } from 'react-redux'
 import WeatherMarker from './weather-marker'
@@ -26,32 +25,33 @@ interface RootState {
   }
 }
 
-export default function WeatherOverlay () {
-  const weatherById = useSelector((s: RootState) => s.weather.byId)
-  const from = useSelector((s: RootState) => s.otp.currentQuery.from)
-  const to   = useSelector((s: RootState) => s.otp.currentQuery.to)
-
+export default function WeatherOverlay() {
+  const weatherById = useSelector((s: any) => s.weather.byId)
+  const { from, to } = useSelector((s: any) => s.otp.currentQuery)
+  console.log(from)
   return (
     <>
-      {from && weatherById.from && (
-        <WeatherMarker lat={from.lat} lon={from.lon} weather={weatherById.from} />
+      {from && (
+        <WeatherMarker
+          lat={from.lat}
+          lon={from.lon}
+          weather={weatherById.from}
+        />
       )}
 
-      {to && weatherById.to && (
-        <WeatherMarker lat={to.lat} lon={to.lon} weather={weatherById.to} />
+      {to && (
+        <WeatherMarker
+          lat={to.lat}
+          lon={to.lon}
+          weather={weatherById.to}
+        />
       )}
 
-      {Object.entries(weatherById).map(([id, w]) => {
+      {Object.entries(weatherById).map(([id, w]: any) => {
         if (id === 'from' || id === 'to') return null
-        return (
-          <WeatherMarker
-            key={id}
-            lat={w.lat}
-            lon={w.lon}
-            weather={w}
-          />
-        )
+        return <WeatherMarker key={id} lat={w.lat} lon={w.lon} weather={w} />
       })}
     </>
   )
+
 }

@@ -1,4 +1,3 @@
-// lib/components/map/weather-marker.tsx
 import { Marker } from 'react-map-gl'
 import React from 'react'
 import styled from 'styled-components'
@@ -20,7 +19,6 @@ interface Props {
   weather: WeatherData
 }
 
-// mover fuera para evitar crear el styled-component en cada render
 const Card = styled.div<{ raining: boolean }>`
   background: #fff;
   padding: 8px 10px;

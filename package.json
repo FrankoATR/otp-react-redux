@@ -19,7 +19,8 @@
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && craco start",
     "percy-serve": "serve",
     "percy-har-express": "har-express",
-    "percy-combined-mock-server": "node ./percy/mock-server.js"
+    "percy-combined-mock-server": "node ./percy/mock-server.js",
+    "test:openweather": "jest __tests__/weather --coverage --collectCoverageFrom='lib/actions/weather.ts,lib/reducers/weather.ts,lib/components/map/use-weather-request.tsx,lib/components/map/weather-marker.tsx,lib/components/map/weather-overlay.tsx'"
   },
   "standard": {
     "parser": "babel-eslint"

@@ -5,12 +5,10 @@ import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
 import useWeatherRequests from '../../lib/components/map/use-weather-requests'
 
-/* ====== mocks para evitar maplibre ====== */
 global.URL.createObjectURL = jest.fn()
 jest.mock('maplibre-gl', () => ({}), { virtual: true })
 jest.mock('@opentripplanner/base-map', () => () => null, { virtual: true })
 jest.mock('@opentripplanner/transitive-overlay', () => ({}), { virtual: true })
-/* ======================================== */
 
 const mockStore = configureStore([thunk])
 
