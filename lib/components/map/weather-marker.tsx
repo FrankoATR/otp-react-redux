@@ -1,4 +1,4 @@
-// src/components/weather-marker.tsx
+// src/components/map/weather-marker.tsx
 
 import { Marker } from 'react-map-gl'
 import React from 'react'
@@ -9,17 +9,17 @@ interface WeatherData {
   lon: number
   loading?: boolean
   data?: {
-    temperature:   number
-    weathercode:   number
+    temperature: number
+    weathercode: number
     winddirection: number
-    windspeed:     number
+    windspeed: number
   } | null
 }
 
 interface Props {
   lat: number
   lon: number
-  weather: WeatherData
+  weather?: WeatherData
 }
 
 const Card = styled.div<{ raining: boolean }>`
@@ -32,29 +32,37 @@ const Card = styled.div<{ raining: boolean }>`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   pointer-events: none;
   white-space: nowrap;
-  border: 1px solid ${(props) => (props.raining ? '#3498db' : '#f39c12')};
+  border: 1px solid ${(p) => (p.raining ? '#3498db' : '#f39c12')};
 `
 
 export default function WeatherMarker({ lat, lon, weather }: Props) {
-  const isLoading = weather.loading
-  const hasData   = weather.data != null
+  if (!weather) {
+    return (
+      <Marker anchor="bottom" latitude={lat} longitude={lon}>
+        <Card raining={false}>🔄 Searching info...</Card>
+      </Marker>
+    )
+  }
 
-  const raining = hasData && weather.data!.weathercode >= 60
+  const { loading = false, data = null } = weather
+  const isLoading = loading
+  const hasData = data !== null
+  const raining = hasData && data!.weathercode >= 60
 
   return (
     <Marker anchor="bottom" latitude={lat} longitude={lon}>
       <Card raining={raining}>
         {isLoading ? (
-          'Searching...'
+          '🔄 Searching info...'
         ) : !hasData ? (
-          '⚠ No weather data found'
+          '⚠ No data for weather found'
         ) : (
           <>
-            {raining ? '☔ Raining' : '🌤'} {weather.data!.temperature} °C
+            {raining ? '☔ Raining' : '🌤'} {data!.temperature} °C
             <br />
-            💨 {weather.data!.windspeed} km/h
+            💨 {data!.windspeed} km/h
             <br />
-            🧭 Wind direction: {weather.data!.winddirection}°
+            🧭 Wind direction: {data!.winddirection}°
           </>
         )}
       </Card>

@@ -1,4 +1,4 @@
-// src/components/GlobalWeatherTimeSelector.tsx
+// src/components/map/global-weather-time-selector.tsx
 
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
@@ -18,6 +18,12 @@ const Container = styled.div`
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   z-index: 1000;
   pointer-events: auto;
+`
+
+const Title = styled.div`
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: center;
 `
 
 const Row = styled.div`
@@ -48,6 +54,9 @@ const HourSelect = styled.select`
 export default function GlobalWeatherTimeSelector() {
   const dispatch = useDispatch()
   const datetime = useSelector((s: any) => s.weather.datetime)
+  const { from, to } = useSelector((s: any) => s.otp.currentQuery)
+
+  if (!from && !to) return null
 
   const date = datetime.slice(0, 10)   // "YYYY-MM-DD"
   const hour = datetime.slice(11, 13)  // "HH"
@@ -60,17 +69,20 @@ export default function GlobalWeatherTimeSelector() {
 
   return (
     <Container>
+      <Title>Weather Parameters</Title>
       <Row>
-        <Label>Date:</Label>
+        <Label htmlFor="weather-date">Date:</Label>
         <DateInput
+          id="weather-date"
           type="date"
           value={date}
           onChange={e => onDateChange(e.target.value)}
         />
       </Row>
       <Row>
-        <Label>Time:</Label>
+        <Label htmlFor="weather-time">Time:</Label>
         <HourSelect
+          id="weather-time"
           value={hour}
           onChange={e => onHourChange(e.target.value)}
         >
