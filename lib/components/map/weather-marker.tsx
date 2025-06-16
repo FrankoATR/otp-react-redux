@@ -1,16 +1,19 @@
+// src/components/weather-marker.tsx
+
 import { Marker } from 'react-map-gl'
 import React from 'react'
 import styled from 'styled-components'
 
 interface WeatherData {
-  data: {
-    temperature: number
-    weathercode: number
-    winddirection: number
-    windspeed: number
-  }
   lat: number
   lon: number
+  loading?: boolean
+  data?: {
+    temperature:   number
+    weathercode:   number
+    winddirection: number
+    windspeed:     number
+  } | null
 }
 
 interface Props {
@@ -33,19 +36,27 @@ const Card = styled.div<{ raining: boolean }>`
 `
 
 export default function WeatherMarker({ lat, lon, weather }: Props) {
-  if (!weather?.data) return null
+  const isLoading = weather.loading
+  const hasData   = weather.data != null
 
-  const { temperature, weathercode, winddirection, windspeed } = weather.data
-  const raining = weathercode >= 60
+  const raining = hasData && weather.data!.weathercode >= 60
 
   return (
     <Marker anchor="bottom" latitude={lat} longitude={lon}>
       <Card raining={raining}>
-        {raining ? '☔ Raining' : '🌤'} {temperature} °C
-        <br />
-        💨 {windspeed} km/h
-        <br />
-        🧭 Wind direction: {winddirection}°
+        {isLoading ? (
+          'Searching...'
+        ) : !hasData ? (
+          '⚠ No weather data found'
+        ) : (
+          <>
+            {raining ? '☔ Raining' : '🌤'} {weather.data!.temperature} °C
+            <br />
+            💨 {weather.data!.windspeed} km/h
+            <br />
+            🧭 Wind direction: {weather.data!.winddirection}°
+          </>
+        )}
       </Card>
     </Marker>
   )

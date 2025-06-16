@@ -1,57 +1,71 @@
-import { AnyAction } from 'redux'
-import { WeatherPayload } from '../actions/weather'
+// src/reducers/weather.ts
 
-interface WeatherData {
+import {
+  REQUEST_WEATHER,
+  RECEIVE_WEATHER,
+  CLEAR_WEATHER
+} from '../actions/weather'
+
+export interface WeatherData {
   lat: number
   lon: number
-  data: WeatherPayload
+  loading?: boolean
+  data?: {
+    temperature:   number
+    weathercode:   number
+    windspeed:     number
+    winddirection: number
+  } | null
 }
 
-interface WeatherState {
-  byId: Record<string, WeatherData>
-  loading: boolean
-  error: string | null
+export interface WeatherState {
+  byId:    Record<string, WeatherData>
+  datetime: string
 }
 
 const initialState: WeatherState = {
   byId: {},
-  loading: false,
-  error: null
+  datetime: new Date().toISOString().slice(0, 13) + ':00:00'
 }
 
 export default function weatherReducer(
   state: WeatherState = initialState,
-  action: AnyAction
+  action: any
 ): WeatherState {
   switch (action.type) {
-    case 'REQUEST_WEATHER':
-      return { ...state, loading: true }
+    case CLEAR_WEATHER:
+      return { ...state, byId: {} }
 
-    case 'RECEIVE_WEATHER': {
-      const { payload, lat, lon, id } = action as unknown as {
-        payload: WeatherPayload
-        lat: number
-        lon: number
-        id: string
-      }
-
+    case REQUEST_WEATHER: {
+      const { id, lat, lon } = action.payload
       return {
         ...state,
-        loading: false,
         byId: {
           ...state.byId,
-          [id]: { lat, lon, data: payload }
+          [id]: { lat, lon, loading: true, data: undefined }
         }
       }
     }
 
-    case 'WEATHER_ERROR':
-      return { ...state, loading: false, error: action.error ?? 'Error desconocido' }
+    case RECEIVE_WEATHER: {
+      const { id, lat, lon, data } = action.payload
+      return {
+        ...state,
+        byId: {
+          ...state.byId,
+          [id]: { lat, lon, loading: false, data: data ?? null }
+        }
+      }
+    }
 
-    case 'CLEAR_WEATHER':
-      return { ...state, byId: {}, loading: false, error: null }
+    case 'SET_WEATHER_DATETIME':
+      return { ...state, datetime: action.payload }
 
     default:
       return state
   }
+}
+
+export function setWeatherDatetime(datetime: string) {
+  return { type: 'SET_WEATHER_DATETIME' as const, payload: datetime }
 }
