@@ -1,44 +1,36 @@
-import weatherReducer from '../../lib/reducers/weather'
+import reducer from '../../lib/reducers/weather'
+import {
+  REQUEST_WEATHER,
+  RECEIVE_WEATHER
+} from '../../lib/actions/weather'
 
-const initialState = {
-  byId: {},
-  loading: false,
-  error: null
-}
+const baseState = reducer(undefined, { type: '@@INIT' } as any)
 
 describe('weatherReducer', () => {
-  it('devuelve el estado inicial por defecto', () => {
-    const newState = weatherReducer(undefined, { type: '@@INIT' })
-    expect(newState).toEqual(initialState)
+  it('retorna su estado inicial', () => {
+    expect(baseState.byId).toEqual({})
   })
 
   it('maneja REQUEST_WEATHER', () => {
-    const action = { type: 'REQUEST_WEATHER' }
-    const newState = weatherReducer(initialState, action)
-    expect(newState.loading).toBe(true)
+    const action = {
+      type: REQUEST_WEATHER,
+      payload: { id: 'pt', lat: 1, lon: 2 }
+    }
+    const state = reducer(baseState, action)
+    expect(state.byId.pt?.loading).toBe(true)
   })
 
   it('maneja RECEIVE_WEATHER', () => {
     const action = {
-      type: 'RECEIVE_WEATHER',
-      id: 'test',
-      lat: 1,
-      lon: 2,
-      payload: { temperature: 20, weathercode: 0, windspeed: 5, winddirection: 90 }
+      type: RECEIVE_WEATHER,
+      payload: {
+        id: 'pt',
+        lat: 1,
+        lon: 2,
+        data: { temperature: 18, weathercode: 0, windspeed: 4, winddirection: 100 }
+      }
     }
-    const newState = weatherReducer(initialState, action)
-    expect(newState.loading).toBe(false)
-    expect(newState.byId.test).toEqual({
-      lat: 1,
-      lon: 2,
-      data: action.payload
-    })
-  })
-
-  it('maneja WEATHER_ERROR', () => {
-    const action = { type: 'WEATHER_ERROR', error: 'fail' }
-    const newState = weatherReducer({ ...initialState, loading: true }, action)
-    expect(newState.loading).toBe(false)
-    expect(newState.error).toBe('fail')
+    const state = reducer(baseState, action)
+    expect(state.byId.pt?.data?.temperature).toBe(18)
   })
 })

@@ -1,38 +1,41 @@
+import '@testing-library/jest-dom'
 import React from 'react'
 import { render, screen } from '@testing-library/react'
-import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
+import thunk from 'redux-thunk'
+import { Provider } from 'react-redux'
 
-jest.mock('react-map-gl', () => ({
-  Marker: ({ children }: any) => <div data-testid="marker">{children}</div>
-}))
+jest.mock('../../lib/components/map/weather-marker', () => () => (
+  <div data-testid="marker">marker</div>
+))
+jest.mock('../../lib/components/map/global-weather-time-selector', () => () => (
+  <div data-testid="selector">selector</div>
+))
 
 import WeatherOverlay from '../../lib/components/map/weather-overlay'
 
-const mockStore = configureStore([])
+const mockStore = configureStore([thunk])
 
-test('renderiza todos los marcadores de clima', () => {
-  const store = mockStore({
-    weather: {
-      byId: {
-        from:         { lat: 1, lon: 2, data: { temperature: 20, weathercode: 0 } },
-        to:           { lat: 3, lon: 4, data: { temperature: 25, weathercode: 0 } },
-        'leg-1-pt-5': { lat: 5, lon: 6, data: { temperature: 27, weathercode: 61 } }
+describe('WeatherOverlay', () => {
+  it('renderiza los marcadores correctos', () => {
+    const store = mockStore({
+      otp: { currentQuery: { from: { lat: 1, lon: 2 }, to: { lat: 3, lon: 4 } } },
+      weather: {
+        byId: {
+          from: { lat: 1, lon: 2, data: {} },
+          to: { lat: 3, lon: 4, data: {} },
+          'sample-1': { lat: 5, lon: 6, data: {} }
+        }
       }
-    },
-    otp: {
-      currentQuery: {
-        from: { lat: 1, lon: 2 },
-        to:   { lat: 3, lon: 4 }
-      }
-    }
+    })
+
+    render(
+      <Provider store={store}>
+        <WeatherOverlay />
+      </Provider>
+    )
+
+    expect(screen.getAllByTestId('marker')).toHaveLength(3)
+    expect(screen.getByTestId('selector')).toBeInTheDocument()
   })
-
-  render(
-    <Provider store={store}>
-      <WeatherOverlay />
-    </Provider>
-  )
-
-  expect(screen.getAllByText(/°C/i)).toHaveLength(3)
 })

@@ -1,29 +1,34 @@
 import React from 'react'
 import { renderHook } from '@testing-library/react-hooks'
-import { Provider } from 'react-redux'
 import configureStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import useWeatherRequests from '../../lib/components/map/use-weather-requests'
+import { Provider } from 'react-redux'
 
-global.URL.createObjectURL = jest.fn()
-jest.mock('maplibre-gl', () => ({}), { virtual: true })
-jest.mock('@opentripplanner/base-map', () => () => null, { virtual: true })
-jest.mock('@opentripplanner/transitive-overlay', () => ({}), { virtual: true })
+/* -------- mocks -------- */
+jest.mock('@mapbox/polyline', () => ({ decode: () => [] }))
+
+jest.mock('../../lib/util/state', () => ({
+  getActiveItinerary: jest.fn(() => null)
+}))
+
+jest.mock('../../lib/actions/weather', () => ({
+  clearWeather: () => ({ type: 'CLEAR_WEATHER' }),
+  fetchWeather: jest.fn(({ id }) => ({ type: 'FETCH_WEATHER', payload: { id } }))
+}))
+
+import useWeatherRequests from '../../lib/components/map/use-weather-requests'
+import { fetchWeather } from '../../lib/actions/weather'
 
 const mockStore = configureStore([thunk])
 
 describe('useWeatherRequests', () => {
-  it('hace dispatch con coordenadas from y to', () => {
+  it('despacha clearWeather y dos fetchWeather', () => {
     const store = mockStore({
       otp: {
-        currentQuery: {
-          from: { lat: 1, lon: 2 },
-          to:   { lat: 3, lon: 4 }
-        },
         activeSearchId: 'abc',
-        currentItineraryIndex: 0
+        currentQuery: { from: { lat: 1, lon: 2 }, to: { lat: 3, lon: 4 } }
       },
-      weather: {}
+      weather: { datetime: '2025-01-01T12:00:00' }
     })
 
     renderHook(() => useWeatherRequests(), {
@@ -31,6 +36,12 @@ describe('useWeatherRequests', () => {
     })
 
     const actions = store.getActions()
-    expect(actions.some(a => a.type === 'REQUEST_WEATHER')).toBe(false)
+    expect(actions).toContainEqual({ type: 'CLEAR_WEATHER' })
+    expect(fetchWeather).toHaveBeenCalledTimes(2)
+    const ids = actions
+      .filter(a => a.type === 'FETCH_WEATHER')
+      .map(a => a.payload.id)
+      .sort()
+    expect(ids).toEqual(['from', 'to'])
   })
 })

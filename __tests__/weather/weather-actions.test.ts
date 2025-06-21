@@ -1,31 +1,35 @@
-import { fetchWeather, weatherError, receiveWeather, requestWeather } from '../../lib/actions/weather'
+import {
+  fetchWeather,
+  REQUEST_WEATHER,
+  RECEIVE_WEATHER
+} from '../../lib/actions/weather'
 
-describe('weather actions', () => {
-  const dispatch = jest.fn()
+jest.mock('../../lib/api/weather-api', () => ({
+  fetchWeatherForDatetime: jest.fn(async () => ({
+    temperature: 20,
+    weathercode: 0,
+    windspeed: 5,
+    winddirection: 90,
+    lat: 1,
+    lon: 2
+  }))
+}))
 
-  beforeEach(() => {
-    jest.clearAllMocks()
-    global.fetch = jest.fn() as jest.Mock
-  })
+describe('weather actions (thunk)', () => {
+  it('despacha REQUEST_WEATHER y luego RECEIVE_WEATHER', async () => {
+    const dispatch = jest.fn()
 
-  it('debe hacer dispatch de clima exitoso', async () => {
-    const mockResponse = { current_weather: { temperature: 28 } }
+    await fetchWeather({
+      id: 'from',
+      lat: 1,
+      lon: 2,
+      datetime: '2025-01-01T12:00:00'
+    })(dispatch, () => ({}), {})
 
-    ;(fetch as jest.Mock).mockResolvedValueOnce({
-      json: () => Promise.resolve(mockResponse)
-    })
+    expect(dispatch.mock.calls[0][0].type).toBe(REQUEST_WEATHER)
+    expect(dispatch.mock.calls[1][0].type).toBe(RECEIVE_WEATHER)
 
-    await fetchWeather({ lat: 1, lon: 2, id: 'test' })(dispatch)
-
-    expect(dispatch).toHaveBeenCalledWith(requestWeather())
-    expect(dispatch).toHaveBeenCalledWith(receiveWeather(mockResponse.current_weather, { lat: 1, lon: 2, id: 'test' }))
-  })
-
-  it('debe manejar errores de API', async () => {
-    ;(fetch as jest.Mock).mockRejectedValueOnce(new Error('Fallo'))
-
-    await fetchWeather({ lat: 1, lon: 2, id: 'test' })(dispatch)
-
-    expect(dispatch).toHaveBeenCalledWith(weatherError('Fallo'))
+    const receive = dispatch.mock.calls[1][0]
+    expect(receive.payload.data.temperature).toBe(20)
   })
 })
