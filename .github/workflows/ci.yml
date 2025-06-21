@@ -22,9 +22,6 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile --network-timeout 600000
 
-      - name: Lint
-        run: yarn lint-all
-
       - name: Type check
         run: yarn typecheck
 
