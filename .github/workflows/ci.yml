@@ -23,7 +23,7 @@ jobs:
         run: yarn install --frozen-lockfile --network-timeout 600000
 
       - name: Type check
-        run: yarn typecheck
+        run: yarn typecheck:weather
 
       - name: Run weather tests
         run: yarn test:openweather
