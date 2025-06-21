@@ -1,7 +1,12 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "lib/components/map/**/*",
-    "__tests__/weather/**/*"
+    "lib/actions/weather.ts",
+    "lib/api/weather-api.ts",
+    "lib/reducers/weather.ts",
+    "lib/components/map/**/*"
+  ],
+  "exclude": [
+    "**/__tests__/**"
   ]
 }
