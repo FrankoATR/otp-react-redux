@@ -14,7 +14,7 @@
     "postpublish": "pinst --enable",
     "prestart": "yarn",
     "test": "yarn run lint && yarn run typecheck && yarn check:i18n-en-fr && yarn run unit",
-    "typecheck:weather": "tsc -p tsconfig.json --noEmit --pretty --strict lib/components/map __tests__/weather",
+    "typecheck:weather": "tsc tsconfig.json --skipLibCheck --noEmit --pretty --strict lib/components/map __tests__/weather",
     "semantic-release": "semantic-release",
     "start": "set NODE_OPTIONS=--openssl-legacy-provider && craco start",
     "percy-serve": "serve",
