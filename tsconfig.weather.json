@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "lib/components/map/**/*",
+    "__tests__/weather/**/*"
+  ]
+}
