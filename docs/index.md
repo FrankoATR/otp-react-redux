@@ -1,7 +1,5 @@
-# Redireccionando...
+<meta http-equiv="refresh" content="0; url=overview" />
 
-[Haz clic aquí si no fuiste redirigido automáticamente.](/overview)
+# Redirección…
 
-<script>
-  location.href = "/overview";
-</script>
+Si no te redirige automáticamente, haz clic en [Aquí](overview).
