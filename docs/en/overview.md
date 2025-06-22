@@ -18,7 +18,7 @@ the itinerary panel and directly on the map.
 
 ## High‑level Architecture
 
-![System diagram](../assets/system-diagram.svg)
+![System diagram](../assets/system-diagram.png)
 
 | Layer | Component | Responsibility |
 |-------|-----------|----------------|
