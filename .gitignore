@@ -23,3 +23,21 @@ dist
 
 # vscode extensions
 .vscode
+
+
+# -----------------------------------
+# Python Env and caches
+# -----------------------------------
+# Byte-code compiled
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Enviroment
+.venv/
+env/
+venv/
+
+# pyenv local version
+.python-version
+open_powershell_env.bat
