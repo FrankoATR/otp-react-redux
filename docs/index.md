@@ -1,5 +1,7 @@
-<meta http-equiv="refresh" content="0; url=es/overview" />
+# Redireccionando...
 
-# Redirección…
+[Haz clic aquí si no fuiste redirigido automáticamente.](/overview)
 
-Si no te redirige automáticamente, haz clic en [Español](es/).
+<script>
+  location.href = "/overview";
+</script>
