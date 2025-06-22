@@ -1,5 +1,5 @@
-<meta http-equiv="refresh" content="0; url=otp-react-redux/overview" />
+<meta http-equiv="refresh" content="0; url=overview" />
 
 # Redirección…
 
-Si no te redirige automáticamente, haz clic en [aquí](otp-react-redux/overview).
+Si no te redirige automáticamente, haz clic en [aquí](overview).
