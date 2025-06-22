@@ -3,9 +3,9 @@ site_description: Documentation for the integration of Open-Meteo with OTP-Redux
 site_author: CodigoTruko
 
 theme:
-  custom_dir: overrides
   name: material
   language: es
+  custom_dir: overrides
   palette:
     primary: indigo
     accent: indigo
@@ -13,39 +13,32 @@ theme:
 plugins:
   - search
   - i18n:
-      default_language: es
-      redirect_fallback: true
+      docs_structure: folder
       languages:
         - locale: es
-          name: Español
           default: true
+          name: Español
+          build: true
         - locale: en
           name: English
+          build: true
 
 nav:
-  - Español:
-      - 01-Visión general: es/overview.md
-      - 02-Instalación: es/instalacion.md
-      - 03-Desarrollo: es/desarrollo.md
-      - 04-Pruebas: es/pruebas.md
-      - 05-CI/CD: es/ci-cd.md
-      - 06-Cambios: es/cambios.md
-      - 07-Glosario: es/glosario.md
-  - English:
-      - 01-Overview: en/overview.md
-      - 02-Installation: en/installation.md
-      - 03-Development: en/development.md
-      - 04-Testing: en/testing.md
-      - 05-CI/CD: en/ci-cd.md
-      - 06-Changelog: en/changelog.md
-      - 07-Glossary: en/glossary.md
+    - Visión general: overview.md
+    - Instalación: installation.md
+    - Desarrollo: development.md
+    - Limitaciones: limitations.md
+    - Pruebas: testing.md
+    - CI/CD: ci-cd.md
+    - Cambios: changelog.md
+    - Glosario: glossary.md
+
 
 markdown_extensions:
   - admonition
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.details
-
 
 extra:
   generator: false

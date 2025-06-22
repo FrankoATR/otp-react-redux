@@ -1,4 +1,3 @@
-<!-- docs/index.md -->
 <meta http-equiv="refresh" content="0; url=es/overview" />
 
 # Redirección…

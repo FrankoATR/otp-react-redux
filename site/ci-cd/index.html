@@ -13,25 +13,25 @@
       
       
       
-        <link rel="prev" href="../ci-cd/">
+        <link rel="prev" href="../testing/">
       
       
-        <link rel="next" href="../glosario/">
+        <link rel="next" href="../changelog/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
-        <title>06-Cambios - Urbano Libre</title>
+        <title>CI/CD - Urbano Libre</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -50,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#registro-de-cambios" class="md-skip">
+        <a href="#integracion-continua-cicd" class="md-skip">
           Saltar a contenido
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Cabecera">
-    <a href="../.." title="Urbano Libre" class="md-header__button md-logo" aria-label="Urbano Libre" data-md-component="logo">
+    <a href=".." title="Urbano Libre" class="md-header__button md-logo" aria-label="Urbano Libre" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              06-Cambios
+              CI/CD
             
           </span>
         </div>
@@ -137,7 +137,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../en/es/cambios/" hreflang="en" class="md-select__link">
+            <a href="../en/ci-cd/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -214,7 +214,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegación" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Urbano Libre" class="md-nav__button md-logo" aria-label="Urbano Libre" data-md-component="logo">
+    <a href=".." title="Urbano Libre" class="md-nav__button md-logo" aria-label="Urbano Libre" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -229,46 +229,6 @@
       
   
   
-    
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    Español
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_1">
-            <span class="md-nav__icon md-icon"></span>
-            Español
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
@@ -277,7 +237,7 @@
   
   
   <span class="md-ellipsis">
-    01-Visión general
+    Visión general
     
   </span>
   
@@ -286,21 +246,20 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../instalacion/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    02-Instalación
+    Instalación
     
   </span>
   
@@ -309,21 +268,20 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../desarrollo/" class="md-nav__link">
+      <a href="../development/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    03-Desarrollo
+    Desarrollo
     
   </span>
   
@@ -332,21 +290,20 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../pruebas/" class="md-nav__link">
+      <a href="../limitations/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    04-Pruebas
+    Limitaciones
     
   </span>
   
@@ -355,21 +312,20 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../ci-cd/" class="md-nav__link">
+      <a href="../testing/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    05-CI/CD
+    Pruebas
     
   </span>
   
@@ -378,10 +334,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
     
@@ -401,7 +356,7 @@
   
   
   <span class="md-ellipsis">
-    06-Cambios
+    CI/CD
     
   </span>
   
@@ -414,7 +369,7 @@
   
   
   <span class="md-ellipsis">
-    06-Cambios
+    CI/CD
     
   </span>
   
@@ -437,35 +392,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#030-21-jun-2025" class="md-nav__link">
+  <a href="#vision-general" class="md-nav__link">
     <span class="md-ellipsis">
-      0.3.0 – 21 jun 2025
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="0.3.0 – 21 jun 2025">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#anadido" class="md-nav__link">
-    <span class="md-ellipsis">
-      Añadido
+      Visión general
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#modificado" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#disparadores" class="md-nav__link">
     <span class="md-ellipsis">
-      Modificado
+      Disparadores
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definicion-yaml-extracto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición YAML (extracto)
+    </span>
+  </a>
   
 </li>
       
@@ -476,34 +434,25 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
   
     <li class="md-nav__item">
-      <a href="../glosario/" class="md-nav__link">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    07-Glosario
+    Cambios
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -514,202 +463,18 @@
   
   
   
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    English
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_2">
-            <span class="md-nav__icon md-icon"></span>
-            English
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../en/overview/" class="md-nav__link">
+      <a href="../glossary/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    01-Overview
+    Glosario
     
   </span>
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/installation/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    02-Installation
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/development/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    03-Development
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/testing/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    04-Testing
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/ci-cd/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    05-CI/CD
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/changelog/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    06-Changelog
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../en/glossary/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    07-Glossary
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -741,35 +506,38 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#030-21-jun-2025" class="md-nav__link">
+  <a href="#vision-general" class="md-nav__link">
     <span class="md-ellipsis">
-      0.3.0 – 21 jun 2025
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="0.3.0 – 21 jun 2025">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#anadido" class="md-nav__link">
-    <span class="md-ellipsis">
-      Añadido
+      Visión general
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#modificado" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#disparadores" class="md-nav__link">
     <span class="md-ellipsis">
-      Modificado
+      Disparadores
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#flujo-de-trabajo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Flujo de trabajo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definicion-yaml-extracto" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definición YAML (extracto)
+    </span>
+  </a>
   
 </li>
       
@@ -789,19 +557,138 @@
 
 
 
-<h1 id="registro-de-cambios">Registro de cambios</h1>
-<h2 id="030-21-jun-2025">0.3.0 – 21 jun 2025</h2>
-<h3 id="anadido">Añadido</h3>
-<ul>
-<li>Capa meteorológica y selector de fecha/hora.</li>
-<li>Slice Redux de clima.</li>
-<li>Pruebas unitarias y de integración.</li>
-<li>Workflow CI dedicado.</li>
-</ul>
-<h3 id="modificado">Modificado</h3>
-<ul>
-<li>Panel de itinerario ahora muestra advertencias si llueve.</li>
-</ul>
+<h1 id="integracion-continua-cicd">Integración continua (CI/CD)</h1>
+<blockquote>
+<p><strong>Objetivo:</strong> Asegurar que la capa de clima (Open-Meteo) no rompa la base OTP-Redux<br />
+y que cada <em>commit</em> llegue a la rama principal <strong>solo</strong> si supera la batería de pruebas.</p>
+</blockquote>
+<h2 id="vision-general">Visión general</h2>
+<table>
+<thead>
+<tr>
+<th>Aspecto</th>
+<th>Detalle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orquestador</td>
+<td><strong>GitHub Actions</strong></td>
+</tr>
+<tr>
+<td>Rama observada</td>
+<td><code>feature/weather-cards</code> <br><em>(extensible a <code>main</code> cuando la funcionalidad esté fusionada)</em></td>
+</tr>
+<tr>
+<td>VM</td>
+<td><code>windows-latest</code> (para replicar el entorno de la mayoría del equipo)</td>
+</tr>
+<tr>
+<td>Node .js</td>
+<td>v 20.19.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="disparadores">Disparadores</h2>
+<table>
+<thead>
+<tr>
+<th>Evento</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>push</code></td>
+<td>Cualquier <em>commit</em> directo sobre <code>feature/weather-cards</code></td>
+</tr>
+<tr>
+<td><code>pull_request</code></td>
+<td>PR cuyo destino sea la misma rama</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="flujo-de-trabajo">Flujo de trabajo</h2>
+<table>
+<thead>
+<tr>
+<th>Orden</th>
+<th>Acción</th>
+<th>Herramienta</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Checkout</strong></td>
+<td><code>actions/checkout@v4</code></td>
+<td>Clona el repositorio</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Setup Node + Yarn cache</strong></td>
+<td><code>actions/setup-node@v4</code><br/>con <code>cache: 'yarn'</code></td>
+<td>Instala Node 20 y reutiliza dependencias</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Instalación</strong></td>
+<td><code>yarn --frozen-lockfile</code></td>
+<td>Falla si <code>package.json</code> ↔ <code>yarn.lock</code> divergen</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Chequeo de tipos</strong></td>
+<td><code>yarn typecheck:weather</code></td>
+<td>Ejecuta <code>tsc</code> con <code>tsconfig.weather.json</code> (solo módulos de clima)</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Pruebas unitarias</strong></td>
+<td><code>yarn test:openweather --ci --maxWorkers=2</code></td>
+<td>Lanza Jest sobre <code>__tests__/weather/</code> y genera cobertura</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Velocidad</p>
+<p>Solo se analizan los archivos recién añadidos: la <em>build</em> completa suele tardar <strong>&lt; 1 minuto</strong> con la caché caliente.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Enfoque</p>
+<p>Un fallo en CI proviene <strong>siempre</strong> de la funcionalidad de clima, nunca del legado OTP-Redux.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Escalabilidad</p>
+<p>Cuando el repositorio esté totalmente tipado, bastará añadir un segundo <em>job</em> global (ESLint / <code>tsc</code>) sin tocar este flujo.</p>
+</div>
+<hr />
+<h2 id="definicion-yaml-extracto">Definición YAML (extracto)</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/test.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CI – Weather feature</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">feature/weather-cards</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">feature/weather-cards</span><span class="p p-Indicator">]</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">windows-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/setup-node@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">node-version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
+<span class="w">          </span><span class="nt">cache</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn --frozen-lockfile</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn typecheck:weather</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">yarn test:openweather --ci --maxWorkers=2</span>
+</code></pre></div>
+<p><strong>Resultado:</strong> cualquier error / cobertura &lt; 90 % detiene la build y bloquea la fusión en la rama principal.</p>
 
 
 
@@ -840,10 +727,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
     
   </body>
