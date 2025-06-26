@@ -24,6 +24,7 @@ plugins:
           build: true
 
 nav:
+    - Manual de usuario: manual.md
     - Visión general: overview.md
     - Instalación: installation.md
     - Desarrollo: development.md
