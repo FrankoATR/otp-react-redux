@@ -2,126 +2,140 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
     <url>
         <loc>None./</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="None"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
     </url>
     <url>
         <loc>Nonechangelog/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Nonechangelog/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/changelog/"/>
     </url>
     <url>
         <loc>Noneci-cd/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Noneci-cd/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/ci-cd/"/>
     </url>
     <url>
         <loc>Nonedevelopment/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Nonedevelopment/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/development/"/>
     </url>
     <url>
         <loc>Noneglossary/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Noneglossary/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/glossary/"/>
     </url>
     <url>
         <loc>Noneinstallation/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Noneinstallation/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/installation/"/>
     </url>
     <url>
         <loc>Nonelimitations/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Nonelimitations/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/limitations/"/>
     </url>
     <url>
+        <loc>Nonemanual/</loc>
+        <lastmod>2025-06-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonemanual/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/manual/"/>
+    </url>
+    <url>
         <loc>Noneoverview/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Noneoverview/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/overview/"/>
     </url>
     <url>
         <loc>Nonetesting/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="es" href="Nonetesting/"/>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/testing/"/>
     </url>
     <url>
         <loc>Noneen/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/"/>
         <xhtml:link rel="alternate" hreflang="es" href="None"/>
     </url>
     <url>
         <loc>Noneen/changelog/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/changelog/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Nonechangelog/"/>
     </url>
     <url>
         <loc>Noneen/ci-cd/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/ci-cd/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Noneci-cd/"/>
     </url>
     <url>
         <loc>Noneen/development/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/development/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Nonedevelopment/"/>
     </url>
     <url>
         <loc>Noneen/glossary/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/glossary/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Noneglossary/"/>
     </url>
     <url>
         <loc>Noneen/installation/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/installation/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Noneinstallation/"/>
     </url>
     <url>
         <loc>Noneen/limitations/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/limitations/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Nonelimitations/"/>
     </url>
     <url>
+        <loc>Noneen/manual/</loc>
+        <lastmod>2025-06-26</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="Noneen/manual/"/>
+        <xhtml:link rel="alternate" hreflang="es" href="Nonemanual/"/>
+    </url>
+    <url>
         <loc>Noneen/overview/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/overview/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Noneoverview/"/>
     </url>
     <url>
         <loc>Noneen/testing/</loc>
-        <lastmod>2025-06-22</lastmod>
+        <lastmod>2025-06-26</lastmod>
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="Noneen/testing/"/>
         <xhtml:link rel="alternate" hreflang="es" href="Nonetesting/"/>
