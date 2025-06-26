@@ -3,6 +3,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import WeatherMarker from '../../lib/components/map/weather-marker'
 
+// sustituimos el Marker de maplibre para que renderice en JSDOM
 jest.mock('react-map-gl', () => ({
   Marker: ({ children }: any) => <div data-testid="marker">{children}</div>
 }))
@@ -25,7 +26,7 @@ describe('WeatherMarker', () => {
         }}
       />
     )
-    expect(screen.getByText(/raining/i)).toBeInTheDocument()
+    expect(screen.getByText(/rain\b/i)).toBeInTheDocument()
   })
 
   it('muestra ícono soleado (weathercode < 60)', () => {
@@ -40,7 +41,7 @@ describe('WeatherMarker', () => {
         }}
       />
     )
-    expect(screen.queryByText(/raining/i)).not.toBeInTheDocument()
+    expect(screen.queryByText(/rain\b/i)).not.toBeInTheDocument()
     expect(screen.getByText((c) => c.includes('🌤'))).toBeInTheDocument()
   })
 })

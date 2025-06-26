@@ -43,10 +43,12 @@ describe('GlobalWeatherTimeSelector', () => {
     const { useDispatch } = require('react-redux')
     useDispatch.mockReturnValue(dispatch)
 
-    const { getByLabelText } = renderWithStore({
+    const { getByText, getByLabelText } = renderWithStore({
       otp: { currentQuery: { from: { lat: 1, lon: 2 }, to: { lat: 3, lon: 4 } } },
       weather: { datetime: '2025-01-01T12:00:00' }
     })
+
+    fireEvent.click(getByText('📅'))
 
     fireEvent.change(getByLabelText(/date/i), { target: { value: '2025-02-02' } })
 
